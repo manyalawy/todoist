@@ -1,13 +1,16 @@
 package com.todoist.list.model;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 @Document
-@Data
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class TodoList {
     @Id
     String id;

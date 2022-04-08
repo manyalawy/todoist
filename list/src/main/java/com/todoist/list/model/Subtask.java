@@ -1,14 +1,17 @@
 package com.todoist.list.model;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Data
 @Document
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Subtask {
     @Id
     String id;
