@@ -5,6 +5,8 @@ import com.todoist.list.service.TodolistService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping(path = "api/todolist")
 @AllArgsConstructor
@@ -12,8 +14,8 @@ public class TodoListController {
     private final TodolistService todolistService;
 
     @PostMapping(path = "/create")
-    public String createList(@RequestBody TodoList todoList){
-        String result = todolistService.createList(todoList);
+    public Map createList(@RequestBody TodoList todoList){
+        Map result = todolistService.createList(todoList);
         return result;
     }
 }

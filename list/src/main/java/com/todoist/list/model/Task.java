@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Document
 @AllArgsConstructor
@@ -18,6 +20,7 @@ import java.util.List;
 public class Task {
     @Id
     String id;
+    String name;
     Boolean done;
     List<Subtask> subtasks;
     List<String> assignee;
