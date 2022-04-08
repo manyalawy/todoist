@@ -18,5 +18,9 @@ public class TodoList {
     List<Task> tasks;
     List<String> collaborators;
     String creator;
+
+    public TodoList(String name) {
+        this.name = name;
+    }
 }
 
