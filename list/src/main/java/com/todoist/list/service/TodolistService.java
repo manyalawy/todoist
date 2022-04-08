@@ -1,12 +1,15 @@
 package com.todoist.list.service;
 
+import com.todoist.list.model.Task;
 import com.todoist.list.model.TodoList;
 import com.todoist.list.repo.TodoListRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -20,4 +23,17 @@ public class TodolistService {
         result.put("data", todoList);
         return result;
     }
+
+
+
+
+    public List<TodoList> searchlistbyname(String name) {
+
+        return todoListRepo.findByName(name);
+
+    }
+
+
+
+
 }

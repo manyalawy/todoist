@@ -24,7 +24,7 @@ public class Task {
     Boolean done;
     List<Subtask> subtasks;
     List<String> assignee;
-    int priority;
+    String priority;
     LocalDate due_date;
     LocalDate date_added;
     List<Comment> comments;

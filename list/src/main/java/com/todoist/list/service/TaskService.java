@@ -34,4 +34,71 @@ public class TaskService {
         return result;
     }
 
+    public Optional<Task> gettaskid(String id) {
+
+        return taskRepo.findById(id);
+
+    }
+
+
+    public Task assigntask(Optional<Task> task , String name ) {
+
+        Task _task=task.get();
+        List<String> assignee = _task.getAssignee();
+        if(assignee==null){
+            List<String> newlist = new ArrayList<>();
+            newlist.add(name);
+            _task.setAssignee(newlist);
+        }
+        else {
+            assignee.add(name);
+            _task.setAssignee(assignee);
+        }
+
+
+
+        return taskRepo.save(_task);
+
+    }
+
+    public Task updatetask(Optional<Task> task , Task tasknew ) {
+        Task _task=task.get();
+
+        if(tasknew.getPriority() != null){
+
+            _task.setPriority(tasknew.getPriority());
+
+
+        }
+
+        if(tasknew.getDone() != null ){
+
+            _task.setDone(tasknew.getDone());
+        }
+
+        if(tasknew.getDue_date() != null ){
+
+            _task.setDue_date(tasknew.getDue_date());
+        }
+
+
+
+        return taskRepo.save(_task);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
