@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84b297b7-ae36-43fa-8cef-36e4a2f95c59" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/todoist.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/todoist.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/TodoListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/TodoListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/model/TodoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/model/TodoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/repo/TodoListRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/repo/TodoListRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/TodolistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/TodolistService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="84b297b7-ae36-43fa-8cef-36e4a2f95c59" name="Changes" comment="c" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,6 +69,14 @@
       <option name="presentableId" value="Default" />
       <updated>1649434302346</updated>
     </task>
+    <task id="LOCAL-00001" summary="c">
+      <created>1649443128372</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649443128372</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -94,7 +90,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/List" />
+                        <option value="origin/Farah" />
                       </list>
                     </value>
                   </entry>
@@ -105,5 +101,24 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/Farah" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="c" />
+    <option name="LAST_COMMIT_MESSAGE" value="c" />
   </component>
 </project>
