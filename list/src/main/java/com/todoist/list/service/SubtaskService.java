@@ -27,7 +27,7 @@ public class SubtaskService {
                 t.setSubtasks(new ArrayList<>());
             }
             t.getSubtasks().add(subtask);
-            t.setDate_added(LocalDate.now());
+            t.setDateadded(LocalDate.now());
             subtaskRepo.insert(subtask);
             taskRepo.save(t);
         }

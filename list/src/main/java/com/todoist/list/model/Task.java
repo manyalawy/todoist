@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class Task {
     List<Subtask> subtasks;
     List<String> assignee;
     String priority;
-    LocalDate due_date;
-    LocalDate date_added;
+    LocalDate duedate;
+    LocalDate dateadded;
     List<Comment> comments;
 }

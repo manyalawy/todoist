@@ -5,6 +5,7 @@ import com.todoist.list.model.TodoList;
 import com.todoist.list.repo.TaskRepo;
 import com.todoist.list.repo.TodoListRepo;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -24,7 +25,7 @@ public class TaskService {
                 list.setTasks(new ArrayList<>());
             }
             list.getTasks().add(task);
-            task.setDate_added(LocalDate.now());
+            task.setDateadded(LocalDate.now());
             taskRepo.insert(task);
             todoListRepo.save(list);
         }
@@ -76,9 +77,9 @@ public class TaskService {
             _task.setDone(tasknew.getDone());
         }
 
-        if(tasknew.getDue_date() != null ){
+        if(tasknew.getDuedate() != null ){
 
-            _task.setDue_date(tasknew.getDue_date());
+            _task.setDuedate(tasknew.getDuedate());
         }
 
 
@@ -86,10 +87,65 @@ public class TaskService {
         return taskRepo.save(_task);
     }
 
+    public List<Task>  getUpcomingDeadlines() {
+        System.out.println("whwhwh"+LocalDate.now());
+        Date date = new Date();
+        List<Task> taskresults = taskRepo.findByDuedateAfter(LocalDate.now());
+        return taskresults;
+
+    }
+
+    public List<Task>  SortbyNameAsc( ){
+        List<Task> taskresults = taskRepo.findAllByOrderByNameAsc();
+        return taskresults;
+
+    }
+    public List<Task>  SortbyNameDsc() {
+        List<Task> taskresults = taskRepo.findAllByOrderByNameDesc();
+        return taskresults;
+
+    }
+    public List<Task>  SortbyDue_dateAsc() {
+        // Sort sort  = Sort.by(sortby);
+        List<Task> taskresults = taskRepo.findAllByOrderByDuedateAsc();
+        return taskresults;
+
+    }
+    public List<Task>  SortbyDue_dateDsc() {
+        // Sort sort  = Sort.by(sortby);
+        List<Task> taskresults = taskRepo.findAllByOrderByDuedateDesc();
+        return taskresults;
+
+    }
+    public List<Task>  SortbyPriorityAsc() {
+        // Sort sort  = Sort.by(sortby);
+        List<Task> taskresults = taskRepo.findAllByOrderByPriorityAsc();
+        return taskresults;
+
+    }
+    public List<Task>  SortbyPriorityDsc() {
+        // Sort sort  = Sort.by(sortby);
+        List<Task> taskresults = taskRepo.findAllByOrderByPriorityDesc();
+        return taskresults;
+
+    }
+    public List<Task>  SortbyDateaddedAsc() {
+        List<Task> taskresults = taskRepo.findAllByOrderByDateaddedAsc();
+        return taskresults;
+
+    }
+    public List<Task>  SortbyDateaddedDsc() {
+        List<Task> taskresults = taskRepo.findAllByOrderByDateaddedDesc();
+        return taskresults;
+
+    }
 
 
+    public List<Task>  searchlistbyname(String name) {
+        List<Task> taskresults = taskRepo.findByName(name);
+        return taskresults;
 
-
+    }
 
 
 
