@@ -31,13 +31,13 @@ public class TaskController {
         try {
 
             Optional<Task> taskedit =  taskService.gettaskid(id);
-
+            System.out.println(taskedit);
 
 
             if (taskedit.isPresent()) {
 
                 Task taskeupdated=taskService.updatetask(taskedit,newtask);
-
+            System.out.println(taskeupdated);
 
 
                 return ResponseEntity
