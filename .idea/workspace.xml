@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84b297b7-ae36-43fa-8cef-36e4a2f95c59" name="Changes" comment="c" />
+    <list default="true" id="84b297b7-ae36-43fa-8cef-36e4a2f95c59" name="Changes" comment="c">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/TodoListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/TodoListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/TodolistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/TodolistService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +48,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ListApplication">
     <configuration name="ListApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.todoist.list.ListApplication" />
       <module name="list" />
@@ -54,9 +62,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="list/docker-compose.yaml.mongo-express: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="mongo-express" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="list/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ListApplication" />
+        <item itemvalue="Docker.list/docker-compose.yaml.mongo-express: Compose Deployment" />
         <item itemvalue="Application.ListApplication" />
         <item itemvalue="Application.ListApplication" />
       </list>

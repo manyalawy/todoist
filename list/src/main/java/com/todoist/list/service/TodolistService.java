@@ -6,10 +6,8 @@ import com.todoist.list.repo.TodoListRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.*;
 
 @AllArgsConstructor
 @Service
@@ -18,6 +16,22 @@ public class TodolistService {
 
     public Map createList(TodoList todoList) {
         todoListRepo.save(todoList);
+        Map result = new HashMap<String, Object>();
+        result.put("success", true);
+        result.put("data", todoList);
+        return result;
+    }
+
+    public Map addCollaborator(String user_id, String list_id){
+        Optional<TodoList> todoList = todoListRepo.findById(list_id);
+        if(todoList.isPresent()){
+            TodoList list = todoList.get();
+            if(list.getCollaborators() == null){
+                list.setCollaborators(new ArrayList<>());
+            }
+            list.getCollaborators().add(user_id);
+            todoListRepo.save(list);
+        }
         Map result = new HashMap<String, Object>();
         result.put("success", true);
         result.put("data", todoList);

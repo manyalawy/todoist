@@ -19,6 +19,12 @@ public class TaskController {
     private final TaskService taskService;
     private final TodolistService todolistService;
 
+    @DeleteMapping("list/{list_id}/task/delete/{task_id}")
+    public ResponseEntity deleteTask(@PathVariable ("list_id") String list_id,@PathVariable("task_id")String task_id){
+        return taskService.deleteTask(list_id,task_id);
+    }
+
+
     @PostMapping("task/create/{list_id}")
     public Map createTask(@RequestBody Task task, @PathVariable("list_id") String list_id){
         Map result = taskService.createTask(task, list_id);
@@ -29,24 +35,14 @@ public class TaskController {
     @PutMapping("/edit/{id}")
     public ResponseEntity editlist(@PathVariable("id") String id , @RequestBody Task newtask ) {
         try {
-
             Optional<Task> taskedit =  taskService.gettaskid(id);
-
-
-
             if (taskedit.isPresent()) {
-
                 Task taskeupdated=taskService.updatetask(taskedit,newtask);
-
-
-
                 return ResponseEntity
                         .status(HttpStatus.OK)
                         .body(taskeupdated);
             }
             else{
-
-
                 return ResponseEntity
                         .status(HttpStatus.NOT_FOUND)
                         .body("cannot find task id");

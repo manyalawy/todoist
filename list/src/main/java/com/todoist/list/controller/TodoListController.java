@@ -16,6 +16,11 @@ import java.util.Map;
 public class TodoListController {
     private final TodolistService todolistService;
 
+    @PostMapping(path ="/addCollaborator")
+    public Map addCollaborator(@RequestBody String user_id,@RequestBody String list_id){
+        Map result = todolistService.addCollaborator(user_id,list_id);
+        return result;
+    }
     @PostMapping(path = "/create")
     public Map createList(@RequestBody TodoList todoList){
         Map result = todolistService.createList(todoList);
