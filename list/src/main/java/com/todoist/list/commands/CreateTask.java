@@ -12,9 +12,9 @@ import org.bson.types.ObjectId;
 
 public class CreateTask implements Command {
     String taskName;
-    String todoListId;
+    ObjectId todoListId;
 
-    public CreateTask(String taskName, String todoListId) {
+    public CreateTask(String taskName, ObjectId todoListId) {
         this.taskName = taskName;
         this.todoListId = todoListId;
     }
@@ -29,7 +29,7 @@ public class CreateTask implements Command {
         InsertOneResult result = taskCollection.insertOne(task);
 
         //Inserting task in todolist
-        Bson filter = Filters.eq("_id", new ObjectId(this.todoListId));
+        Bson filter = Filters.eq("_id", this.todoListId);
         Bson update = Updates.push("tasks", result.getInsertedId().asObjectId());
         todolistCollection.findOneAndUpdate(filter, update);
     }

@@ -13,9 +13,9 @@ import org.bson.types.ObjectId;
 public class CreateSubtask implements Command{
 
     String subtaskName;
-    String taskId;
+    ObjectId taskId;
 
-    public CreateSubtask(String subtaskName, String taskId) {
+    public CreateSubtask(String subtaskName, ObjectId taskId) {
         this.subtaskName = subtaskName;
         this.taskId = taskId;
     }
@@ -30,8 +30,8 @@ public class CreateSubtask implements Command{
         InsertOneResult result = subTaskCollection.insertOne(subtask);
 
         //Inserting task in todolist
-        Bson filter = Filters.eq("_id", new ObjectId(this.taskId));
-        Bson update = Updates.push("tasks", result.getInsertedId().asObjectId());
+        Bson filter = Filters.eq("_id", this.taskId);
+        Bson update = Updates.push("subtasks", result.getInsertedId().asObjectId());
         taskCollection.findOneAndUpdate(filter, update);
     }
 
