@@ -1,7 +1,7 @@
-package com.todoist.list.repo;
-
-import com.todoist.list.model.Comment;
-import org.springframework.data.mongodb.repository.MongoRepository;
-
-public interface CommentRepo extends MongoRepository<Comment, String> {
-}
+//package com.todoist.list.repo;
+//
+//import com.todoist.list.model.Comment;
+//import org.springframework.data.mongodb.repository.MongoRepository;
+//
+//public interface CommentRepo extends MongoRepository<Comment, String> {
+//}
