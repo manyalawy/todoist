@@ -4,11 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="" />
+    <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="changed git ignore">
+      <change afterPath="$PROJECT_DIR$/list/docker-compose.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Helpers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Producer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/config/Producer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/list.iml" beforeDir="false" afterPath="$PROJECT_DIR$/list/list.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/list/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateSubtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateSubtask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Sender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/commands/CreateSubtask.class" beforeDir="false" afterPath="$PROJECT_DIR$/list/target/classes/com/todoist/list/commands/CreateSubtask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/commands/CreateTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/list/target/classes/com/todoist/list/commands/CreateTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Consumer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Sender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,6 +50,9 @@
     </option>
   </component>
   <component name="ProjectId" id="29LY6gtxQTyaAPxV9LN4HYRP7uW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -32,8 +61,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/list" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/list" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.List">
     <configuration name="List" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.todoist.list.List" />
       <module name="list" />
@@ -47,8 +88,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.todoist.server.ServerApplication" />
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.todoist.server.config.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ServerApplication" />
         <item itemvalue="Application.List" />
       </list>
     </recent_temporary>

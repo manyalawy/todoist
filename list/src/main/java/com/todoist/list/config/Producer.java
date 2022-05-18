@@ -7,20 +7,17 @@ import com.rabbitmq.client.ConnectionFactory;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class Sender {
+public class Producer {
 
-    public static void main(String[] args) throws IOException, TimeoutException {
-       ConnectionFactory factory =  new ConnectionFactory();
-       factory.setUsername("myuser");
-       factory.setPassword("mypassword");
+    public void produceMessage(String queueName, String message) throws IOException, TimeoutException {
+        ConnectionFactory factory =  new ConnectionFactory();
+        factory.setUsername("myuser");
+        factory.setPassword("mypassword");
         try (Connection connection = factory.newConnection()) {
             Channel channel = connection.createChannel();
-            channel.queueDeclare("create-task",false, false, false, null);
-            String message = "is this an F";
+            channel.queueDeclare(queueName,false, false, false, null);
             channel.basicPublish("", "create-task", false, null, message.getBytes());
-            System.out.println("Message sent");
-
         }
-
     }
+
 }

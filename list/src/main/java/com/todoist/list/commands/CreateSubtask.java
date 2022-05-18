@@ -15,9 +15,9 @@ public class CreateSubtask implements Command{
     String subtaskName;
     ObjectId taskId;
 
-    public CreateSubtask(String subtaskName, ObjectId taskId) {
+    public CreateSubtask(String subtaskName, String taskId) {
         this.subtaskName = subtaskName;
-        this.taskId = taskId;
+        this.taskId = new ObjectId(taskId);
     }
 
     public void execute() {

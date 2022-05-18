@@ -14,9 +14,9 @@ public class CreateTask implements Command {
     String taskName;
     ObjectId todoListId;
 
-    public CreateTask(String taskName, ObjectId todoListId) {
+    public CreateTask(String taskName, String todoListId) {
         this.taskName = taskName;
-        this.todoListId = todoListId;
+        this.todoListId = new ObjectId(todoListId);
     }
 
     public void execute() {
