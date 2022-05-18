@@ -4,42 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/list2/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/list2/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/list2/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/list2/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/list2/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/list2/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/list2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/List.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateSubtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/commands/CreateSubtask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/commands/CreateTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateTodolist.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/commands/CreateTodolist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/config/Consumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/MongoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/config/MongoDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Sender.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/config/Sender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/constants/CollectionNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/constants/CollectionNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/SubtaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/controller/SubtaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/controller/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/controller/TodoListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/controller/TodoListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/model/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/model/Subtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/model/Subtask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/model/TodoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/model/TodoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/repo/CommentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/repo/CommentRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/repo/SubtaskRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/repo/SubtaskRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/repo/TaskRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/repo/TaskRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/repo/TodoListRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/repo/TodoListRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/service/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/SubtaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/service/SubtaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/service/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/service/TodolistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/list2/src/main/java/com/todoist/list/service/TodolistService.java" afterDir="false" />
-    </list>
+    <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +12,26 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="29LY6gtxQTyaAPxV9LN4HYRP7uW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RunManager">
     <configuration name="List" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -68,7 +53,15 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="" />
+      <created>1652893661602</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652893661602</updated>
+    </task>
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
