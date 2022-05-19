@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="changed git ignore">
-      <change afterPath="$PROJECT_DIR$/list/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Helpers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Producer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/config/Producer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/AddCollaborator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/AddComment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/DeleteTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/list/list.iml" beforeDir="false" afterPath="$PROJECT_DIR$/list/list.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/list/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateSubtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateSubtask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/CreateTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Sender.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/commands/CreateSubtask.class" beforeDir="false" afterPath="$PROJECT_DIR$/list/target/classes/com/todoist/list/commands/CreateSubtask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/commands/CreateTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/list/target/classes/com/todoist/list/commands/CreateTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Consumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Sender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +86,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="todoist" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="todoist" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

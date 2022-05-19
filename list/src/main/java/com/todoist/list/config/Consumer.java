@@ -1,9 +1,7 @@
 package com.todoist.list.config;
 
 import com.rabbitmq.client.*;
-import com.todoist.list.commands.CreateSubtask;
-import com.todoist.list.commands.CreateTask;
-import com.todoist.list.commands.CreateTodolist;
+import com.todoist.list.commands.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -25,6 +23,9 @@ public class Consumer {
         channel.queueDeclare("create-task",false, false, false, null);
         channel.queueDeclare("create-todolist",false, false, false, null);
         channel.queueDeclare("create-subtask",false, false, false, null);
+        channel.queueDeclare("delete-task",false, false, false, null);
+        channel.queueDeclare("add-comment",false, false, false, null);
+        channel.queueDeclare("add-collaborator",false, false, false, null);
         channel.basicConsume("create-task", true, (consumerTag, message) -> {
             String s = new String(message.getBody(), "UTF-8");
             Helpers helpers = new Helpers();
@@ -52,6 +53,36 @@ public class Consumer {
         }, consumerTag -> {
 
         });
+
+        channel.basicConsume("delete-task", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            DeleteTask deleteTask = new DeleteTask((String) jsonObject.get("task_id"), (String) jsonObject.get("list_id"));
+            deleteTask.execute();
+        }, consumerTag -> {
+
+        });
+        channel.basicConsume("add-comment", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            AddComment addComment = new AddComment((String) jsonObject.get("content"), (String) jsonObject.get("task_id"));
+            addComment.execute();
+        }, consumerTag -> {
+
+        });
+        channel.basicConsume("add-collaborator", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            AddCollaborator addCollaborator = new AddCollaborator((String) jsonObject.get("user_id"), (String) jsonObject.get("list_id"));
+            addCollaborator.execute();
+        }, consumerTag -> {
+
+        });
+
+
 
     }
 
