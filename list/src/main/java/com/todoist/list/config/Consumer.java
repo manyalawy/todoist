@@ -1,14 +1,13 @@
 package com.todoist.list.config;
 
 import com.rabbitmq.client.*;
-import com.todoist.list.commands.CreateSubtask;
-import com.todoist.list.commands.CreateTask;
-import com.todoist.list.commands.CreateTodolist;
+import com.todoist.list.commands.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.concurrent.TimeoutException;
 
 public class Consumer {
@@ -25,6 +24,11 @@ public class Consumer {
         channel.queueDeclare("create-task",false, false, false, null);
         channel.queueDeclare("create-todolist",false, false, false, null);
         channel.queueDeclare("create-subtask",false, false, false, null);
+        channel.queueDeclare("assign-task",false, false, false, null);
+        channel.queueDeclare("edit-task",false, false, false, null);
+
+
+
         channel.basicConsume("create-task", true, (consumerTag, message) -> {
             String s = new String(message.getBody(), "UTF-8");
             Helpers helpers = new Helpers();
@@ -49,6 +53,28 @@ public class Consumer {
             JSONObject jsonObject = helpers.parseToJson(s);
             CreateSubtask createSubtask = new CreateSubtask((String) jsonObject.get("name"), (String) jsonObject.get("task_id"));
             createSubtask.execute();
+        }, consumerTag -> {
+
+        });
+
+        channel.basicConsume("assign-task", false, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            AssignToTask AssignToTask =new AssignToTask((String) jsonObject.get("task_id"),(String) jsonObject.get("assignee"));
+
+            AssignToTask.execute();
+        }, consumerTag -> {
+
+        });
+
+        channel.basicConsume("edit-task", false, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            EditTask EditTask =new EditTask((String) jsonObject.get("task_id"),(String) jsonObject.get("name"), (String) jsonObject.get("priority"),(Date) jsonObject.get("due_date"),(Boolean) jsonObject.get("done"));
+
+            EditTask.execute();
         }, consumerTag -> {
 
         });

@@ -50,4 +50,33 @@ public class ListController {
         res.put("success", true);
         return res;
     }
+    @PostMapping("task/assign")
+    public Map assignTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
+        JSONParser parser = new JSONParser();
+        JSONObject json = (JSONObject) parser.parse(body);
+        Producer producer =  new Producer();
+        producer.produceMessage("assign-task", body);
+        HashMap res = new HashMap<>();
+        res.put("success", true);
+        return res;
+    }
+
+    @PostMapping("task/edit")
+    public Map editTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
+        JSONParser parser = new JSONParser();
+        JSONObject json = (JSONObject) parser.parse(body);
+        Producer producer =  new Producer();
+        producer.produceMessage("edit-task", body);
+        HashMap res = new HashMap<>();
+        res.put("success", true);
+        return res;
+    }
+
+
+
+
+
+
+
+
 }
