@@ -1,14 +1,13 @@
 package com.todoist.list.config;
 
 import com.rabbitmq.client.*;
-import com.todoist.list.commands.CreateSubtask;
-import com.todoist.list.commands.CreateTask;
-import com.todoist.list.commands.CreateTodolist;
+import com.todoist.list.commands.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.concurrent.TimeoutException;
 
 public class Consumer {
@@ -18,13 +17,27 @@ public class Consumer {
 
     public void consume() throws IOException, TimeoutException {
         ConnectionFactory factory =  new ConnectionFactory();
-        factory.setUsername("myuser");
-        factory.setPassword("mypassword");
+        factory.setUsername("guest");
+        factory.setPassword("guest");
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
         channel.queueDeclare("create-task",false, false, false, null);
         channel.queueDeclare("create-todolist",false, false, false, null);
         channel.queueDeclare("create-subtask",false, false, false, null);
+        channel.queueDeclare("assign-task",false, false, false, null);
+        channel.queueDeclare("edit-task",false, false, false, null);
+        channel.queueDeclare("search-list",false, false, false, null);
+        channel.queueDeclare("search-task",false, false, false, null);
+        channel.queueDeclare("sort-task",false, false, false, null);
+        channel.queueDeclare("deadline-task",false, false, false, null);
+
+
+
+
+        channel.queueDeclare("delete-task",false, false, false, null);
+        channel.queueDeclare("add-comment",false, false, false, null);
+        channel.queueDeclare("add-collaborator",false, false, false, null);
+
         channel.basicConsume("create-task", true, (consumerTag, message) -> {
             String s = new String(message.getBody(), "UTF-8");
             Helpers helpers = new Helpers();
@@ -52,6 +65,110 @@ public class Consumer {
         }, consumerTag -> {
 
         });
+
+        channel.basicConsume("assign-task", false, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            AssignToTask AssignToTask =new AssignToTask((String) jsonObject.get("task_id"),(String) jsonObject.get("assignee"));
+
+            AssignToTask.execute();
+        }, consumerTag -> {
+
+        });
+
+        channel.basicConsume("edit-task", false, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            EditTask EditTask =new EditTask((String) jsonObject.get("task_id"),(String) jsonObject.get("name"), (String) jsonObject.get("priority"),(Date) jsonObject.get("due_date"),(Boolean) jsonObject.get("done"));
+
+            EditTask.execute();
+        }, consumerTag -> {
+
+        });
+
+        channel.basicConsume("search-list", false, (consumerTag, message) -> {
+
+            String s = new String(message.getBody(), "UTF-8");
+
+
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            ListSearch ListSearch =new ListSearch((String) jsonObject.get("name"));
+
+            ListSearch.execute();
+
+
+
+        }, consumerTag -> {
+
+        });
+
+
+
+
+
+
+        channel.basicConsume("delete-task", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            DeleteTask deleteTask = new DeleteTask((String) jsonObject.get("task_id"), (String) jsonObject.get("list_id"));
+            deleteTask.execute();
+        }, consumerTag -> {
+
+        });
+        channel.basicConsume("add-comment", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            AddComment addComment = new AddComment((String) jsonObject.get("content"), (String) jsonObject.get("task_id"));
+            addComment.execute();
+        }, consumerTag -> {
+
+        });
+        channel.basicConsume("add-collaborator", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            AddCollaborator addCollaborator = new AddCollaborator((String) jsonObject.get("user_id"), (String) jsonObject.get("list_id"));
+            addCollaborator.execute();
+        }, consumerTag -> {
+
+        });
+
+        channel.basicConsume("search-task", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            TaskSearch TaskSearch = new TaskSearch((String) jsonObject.get("list_id"), (String) jsonObject.get("name"));
+            TaskSearch.execute();
+        }, consumerTag -> {
+
+        });
+
+        channel.basicConsume("sort-task", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            SortTask SortTask = new SortTask((String) jsonObject.get("task_id"), (String) jsonObject.get("name"),(String) jsonObject.get("order"));
+            SortTask.execute();
+        }, consumerTag -> {
+
+        });
+
+        channel.basicConsume("deadline-task", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            TaskDeadline TaskDeadline = new TaskDeadline();
+            TaskDeadline.execute();
+        }, consumerTag -> {
+
+        });
+
+
 
     }
 
