@@ -14,8 +14,8 @@ public class Producer {
 
     public void produceMessage(String queueName, String message) throws IOException, TimeoutException {
         ConnectionFactory factory =  new ConnectionFactory();
-        factory.setUsername("myuser");
-        factory.setPassword("mypassword");
+        factory.setUsername("guest");
+        factory.setPassword("guest");
         try (Connection connection = factory.newConnection()) {
             Channel channel = connection.createChannel();
             channel.queueDeclare(queueName,false, false, false, null);
