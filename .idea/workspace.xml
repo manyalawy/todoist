@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="m">
+    <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="changed git ignore">
+      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/AddCollaborator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/AddComment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/DeleteTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/AssignToTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/AssignToTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/ListSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/ListSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Consumer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/list.iml" beforeDir="false" afterPath="$PROJECT_DIR$/list/list.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,11 +26,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="List" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -40,9 +37,6 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="29LY6gtxQTyaAPxV9LN4HYRP7uW" />
   <component name="ProjectLevelVcsManager">
@@ -83,19 +77,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MongoDB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.todoist.list.config.MongoDB" />
-      <module name="list" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.todoist.list.config.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.todoist.server.ServerApplication" />
       <module name="server" />
@@ -109,39 +90,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.todoist.list.commands.test" />
-      <module name="list" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.todoist.list.commands.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="todoist" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="list/docker-compose.yaml.rabbitmq3: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="rabbitmq3" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="list/docker-compose.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="todoist" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.List" />
         <item itemvalue="Application.ServerApplication" />
-        <item itemvalue="Application.test" />
-        <item itemvalue="Application.MongoDB" />
-        <item itemvalue="Docker.list/docker-compose.yaml.rabbitmq3: Compose Deployment" />
+        <item itemvalue="Application.List" />
       </list>
     </recent_temporary>
   </component>
@@ -154,21 +119,6 @@
       <option name="presentableId" value="Default" />
       <updated>1652893661602</updated>
     </task>
-    <task id="LOCAL-00001" summary="m">
-      <created>1653009042300</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1653009042300</updated>
-    </task>
-    <task id="LOCAL-00002" summary="m">
-      <created>1653011196244</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1653011196244</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,31 +126,10 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="Farahlist" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="m" />
-    <option name="LAST_COMMIT_MESSAGE" value="m" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/todoist$ServerApplication.ic" NAME="ServerApplication Coverage Results" MODIFIED="1653005123592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.todoist.server.config.*</FILTER>
-    </SUITE>
   </component>
 </project>

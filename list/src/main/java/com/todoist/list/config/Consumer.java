@@ -30,6 +30,9 @@ public class Consumer {
 
 
 
+        channel.queueDeclare("delete-task",false, false, false, null);
+        channel.queueDeclare("add-comment",false, false, false, null);
+        channel.queueDeclare("add-collaborator",false, false, false, null);
         channel.basicConsume("create-task", true, (consumerTag, message) -> {
             String s = new String(message.getBody(), "UTF-8");
             Helpers helpers = new Helpers();
@@ -96,6 +99,36 @@ public class Consumer {
 
 
 
+
+
+
+        channel.basicConsume("delete-task", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            DeleteTask deleteTask = new DeleteTask((String) jsonObject.get("task_id"), (String) jsonObject.get("list_id"));
+            deleteTask.execute();
+        }, consumerTag -> {
+
+        });
+        channel.basicConsume("add-comment", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            AddComment addComment = new AddComment((String) jsonObject.get("content"), (String) jsonObject.get("task_id"));
+            addComment.execute();
+        }, consumerTag -> {
+
+        });
+        channel.basicConsume("add-collaborator", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            AddCollaborator addCollaborator = new AddCollaborator((String) jsonObject.get("user_id"), (String) jsonObject.get("list_id"));
+            addCollaborator.execute();
+        }, consumerTag -> {
+
+        });
 
 
 

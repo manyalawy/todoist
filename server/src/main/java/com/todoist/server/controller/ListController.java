@@ -89,4 +89,37 @@ public class ListController {
 
 
 
+
+    @DeleteMapping("task/delete")
+    public Map deleteTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
+        JSONParser parser = new JSONParser();
+        JSONObject json = (JSONObject) parser.parse(body);
+        Producer producer =  new Producer();
+        producer.produceMessage("delete-task", body);
+        HashMap res = new HashMap<>();
+        res.put("success", true);
+        return res;
+    }
+
+    @PostMapping("comments/add")
+    public Map addComment(@RequestBody String body) throws ParseException, IOException, TimeoutException {
+        JSONParser parser = new JSONParser();
+        JSONObject json = (JSONObject) parser.parse(body);
+        Producer producer =  new Producer();
+        producer.produceMessage("add-comment", body);
+        HashMap res = new HashMap<>();
+        res.put("success", true);
+        return res;
+    }
+
+    @PostMapping("collaborators/add")
+    public Map addCollaborator(@RequestBody String body) throws ParseException, IOException, TimeoutException {
+        JSONParser parser = new JSONParser();
+        JSONObject json = (JSONObject) parser.parse(body);
+        Producer producer =  new Producer();
+        producer.produceMessage("add-collaborator", body);
+        HashMap res = new HashMap<>();
+        res.put("success", true);
+        return res;
+    }
 }
