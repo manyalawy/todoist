@@ -69,7 +69,7 @@ public class ListController {
         return res;
     }
 
-    @GetMapping("search")
+    @GetMapping("/search")
     public Map searchList(@RequestBody String body) throws ParseException, IOException, TimeoutException {
         JSONParser parser = new JSONParser();
         JSONObject json = (JSONObject) parser.parse(body);

@@ -26,6 +26,7 @@ public class Consumer {
         channel.queueDeclare("create-subtask",false, false, false, null);
         channel.queueDeclare("assign-task",false, false, false, null);
         channel.queueDeclare("edit-task",false, false, false, null);
+        channel.queueDeclare("search-list",false, false, false, null);
 
 
 
@@ -80,7 +81,10 @@ public class Consumer {
         });
 
         channel.basicConsume("search-list", false, (consumerTag, message) -> {
+
             String s = new String(message.getBody(), "UTF-8");
+
+
             Helpers helpers = new Helpers();
             JSONObject jsonObject = helpers.parseToJson(s);
             ListSearch ListSearch =new ListSearch((String) jsonObject.get("name"));
