@@ -1,4 +1,4 @@
-package com.todoist.board.commands;
+package main.java.com.todoist.board.commands;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
@@ -10,14 +10,15 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
-public class AddComment implements Command{
+public class AddCommentBoard implements Command{
 
     String content;
-    ObjectId taskId;
+    ObjectId board_ID;
 
-    public AddComment(String comment, String taskId) {
+    public AddCommentTaskBoard(String comment, String board_id) {
         this.content = comment;
-        this.taskId = new ObjectId(taskId);
+        this.board_id = new ObjectId(board_id);
+
     }
 
     public void execute() {
@@ -30,7 +31,8 @@ public class AddComment implements Command{
         InsertOneResult result = commentCollection.insertOne(comment);
 
 
-        Bson filter = Filters.eq("_id", this.taskId);
+        Bson filter = Filters.eq("_id", this.board_ID);
+
         Bson update = Updates.push("comments", result.getInsertedId().asObjectId());
         taskCollection.findOneAndUpdate(filter, update);
     }
