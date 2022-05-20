@@ -17,8 +17,8 @@ public class Consumer {
 
     public void consume() throws IOException, TimeoutException {
         ConnectionFactory factory =  new ConnectionFactory();
-        factory.setUsername("myuser");
-        factory.setPassword("mypassword");
+        factory.setUsername("guest");
+        factory.setPassword("guest");
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
         channel.queueDeclare("create-task",false, false, false, null);
@@ -27,12 +27,17 @@ public class Consumer {
         channel.queueDeclare("assign-task",false, false, false, null);
         channel.queueDeclare("edit-task",false, false, false, null);
         channel.queueDeclare("search-list",false, false, false, null);
+        channel.queueDeclare("search-task",false, false, false, null);
+        channel.queueDeclare("sort-task",false, false, false, null);
+        channel.queueDeclare("deadline-task",false, false, false, null);
+
 
 
 
         channel.queueDeclare("delete-task",false, false, false, null);
         channel.queueDeclare("add-comment",false, false, false, null);
         channel.queueDeclare("add-collaborator",false, false, false, null);
+
         channel.basicConsume("create-task", true, (consumerTag, message) -> {
             String s = new String(message.getBody(), "UTF-8");
             Helpers helpers = new Helpers();
@@ -93,6 +98,9 @@ public class Consumer {
             ListSearch ListSearch =new ListSearch((String) jsonObject.get("name"));
 
             ListSearch.execute();
+
+
+
         }, consumerTag -> {
 
         });
@@ -126,6 +134,36 @@ public class Consumer {
             JSONObject jsonObject = helpers.parseToJson(s);
             AddCollaborator addCollaborator = new AddCollaborator((String) jsonObject.get("user_id"), (String) jsonObject.get("list_id"));
             addCollaborator.execute();
+        }, consumerTag -> {
+
+        });
+
+        channel.basicConsume("search-task", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            TaskSearch TaskSearch = new TaskSearch((String) jsonObject.get("list_id"), (String) jsonObject.get("name"));
+            TaskSearch.execute();
+        }, consumerTag -> {
+
+        });
+
+        channel.basicConsume("sort-task", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            SortTask SortTask = new SortTask((String) jsonObject.get("task_id"), (String) jsonObject.get("name"),(String) jsonObject.get("order"));
+            SortTask.execute();
+        }, consumerTag -> {
+
+        });
+
+        channel.basicConsume("deadline-task", true, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            TaskDeadline TaskDeadline = new TaskDeadline();
+            TaskDeadline.execute();
         }, consumerTag -> {
 
         });

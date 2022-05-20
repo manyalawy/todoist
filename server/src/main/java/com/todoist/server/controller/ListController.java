@@ -88,6 +88,68 @@ public class ListController {
        
         producer.produceMessage("search-list", body);
 
+
+//        ApplicationContext context =
+//                new AnnotationConfigApplicationContext(RabbitConfiguration.class);
+//        AmqpTemplate template = context.getBean(AmqpTemplate.class);
+//
+
+
+//        ListSearch ListSearch =new ListSearch((String) jsonObject.get("name"));
+//
+//        ListSearch.execute();
+
+
+//        template.convertAndSend("myqueue", "Hello from RabbitMQ!  test ");
+
+
+
+
+        HashMap res = new HashMap<>();
+        res.put("success", true);
+        return res;
+    }
+
+    @GetMapping("task/search")
+    public Map searchTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
+        JSONParser parser = new JSONParser();
+        JSONObject json = (JSONObject) parser.parse(body);
+        Producer producer =  new Producer();
+
+        producer.produceMessage("search-task", body);
+
+
+
+        HashMap res = new HashMap<>();
+        res.put("success", true);
+        return res;
+    }
+
+    @GetMapping("task/sort")
+    public Map sortTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
+        JSONParser parser = new JSONParser();
+        JSONObject json = (JSONObject) parser.parse(body);
+        Producer producer =  new Producer();
+
+        producer.produceMessage("sort-task", body);
+
+
+
+        HashMap res = new HashMap<>();
+        res.put("success", true);
+        return res;
+    }
+
+    @GetMapping("task/deadline")
+    public Map deadlineTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
+        JSONParser parser = new JSONParser();
+        JSONObject json = (JSONObject) parser.parse(body);
+        Producer producer =  new Producer();
+
+        producer.produceMessage("deadline-task", body);
+
+
+
         HashMap res = new HashMap<>();
         res.put("success", true);
         return res;
@@ -127,11 +189,14 @@ public class ListController {
     }
 
     @PostMapping("test")
-    public Object test(@RequestBody String body){
+    public void test(@RequestBody String body){
         ApplicationContext context =
                 new AnnotationConfigApplicationContext(RabbitConfiguration.class);
         AmqpTemplate template = context.getBean(AmqpTemplate.class);
-        Object foo =  template.receiveAndConvert("myqueue");
-        return foo;
+
+       template.convertAndSend("myqueue", "TESTTTTTT finall ");
+
+
+
     }
 }
