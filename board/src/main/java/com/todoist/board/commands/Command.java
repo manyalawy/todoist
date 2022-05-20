@@ -1,4 +1,4 @@
-package com.todoist.board.commands;
+package com.todoist.list.commands;
 
 public interface Command {
 

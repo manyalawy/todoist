@@ -1,4 +1,4 @@
-package com.todoist.board.config;
+package com.todoist.list.config;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

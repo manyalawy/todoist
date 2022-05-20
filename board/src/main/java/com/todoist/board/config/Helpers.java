@@ -1,6 +1,6 @@
-package com.todoist.board.config;
+package com.todoist.list.config;
 
-import com.todoist.board.commands.CreateTodolist;
+import com.todoist.list.commands.CreateTodolist;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

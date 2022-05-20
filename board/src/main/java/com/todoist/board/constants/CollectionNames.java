@@ -1,4 +1,4 @@
-package com.todoist.board.constants;
+package com.todoist.list.constants;
 
 public enum CollectionNames {
     TODOLIST("todolist"),

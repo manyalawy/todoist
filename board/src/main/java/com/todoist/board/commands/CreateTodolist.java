@@ -1,8 +1,8 @@
-package com.todoist.board.commands;
+package com.todoist.list.commands;
 
 import com.mongodb.client.MongoCollection;
-import com.todoist.board.config.MongoDB;
-import com.todoist.board.constants.CollectionNames;
+import com.todoist.list.config.MongoDB;
+import com.todoist.list.constants.CollectionNames;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
