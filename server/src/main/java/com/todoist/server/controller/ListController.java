@@ -4,10 +4,7 @@ import com.todoist.server.config.Producer;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -67,6 +64,17 @@ public class ListController {
         JSONObject json = (JSONObject) parser.parse(body);
         Producer producer =  new Producer();
         producer.produceMessage("edit-task", body);
+        HashMap res = new HashMap<>();
+        res.put("success", true);
+        return res;
+    }
+
+    @GetMapping("search")
+    public Map searchList(@RequestBody String body) throws ParseException, IOException, TimeoutException {
+        JSONParser parser = new JSONParser();
+        JSONObject json = (JSONObject) parser.parse(body);
+        Producer producer =  new Producer();
+        producer.produceMessage("search-list", body);
         HashMap res = new HashMap<>();
         res.put("success", true);
         return res;

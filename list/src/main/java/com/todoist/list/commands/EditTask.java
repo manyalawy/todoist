@@ -14,7 +14,7 @@ public class EditTask implements Command{
 
 
     String taskName;
-    String Taskid;
+    ObjectId Taskid;
     String priority;
     Date due_date;
     Boolean done;
@@ -22,7 +22,7 @@ public class EditTask implements Command{
 
     public EditTask(String Taskid,String taskName,String priority,Date due_date,Boolean done) {
         this.taskName = taskName;
-        this.Taskid = Taskid;
+        this.Taskid = new ObjectId(Taskid);
         this.done=done;
         this.due_date=due_date;
         this.priority=priority;

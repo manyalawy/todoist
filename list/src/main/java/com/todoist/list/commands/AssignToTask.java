@@ -12,10 +12,10 @@ import org.bson.types.ObjectId;
 public class AssignToTask implements Command{
 
     String assignee;
-    String TaskId;
+    ObjectId TaskId;
 
     public AssignToTask(String TaskId, String assignee) {
-        this.TaskId = TaskId;
+        this.TaskId = new ObjectId(TaskId);
         this.assignee = assignee;
     }
 
@@ -33,12 +33,11 @@ public class AssignToTask implements Command{
         //assigne not repeated
 
 
-        Bson filter = Filters.eq("_id", this.TaskId);
+        Bson filter = Filters.eq("_id", TaskId);
 
-        FindIterable test = taskCollection.find(filter);
-        Bson update = Updates.push("assignee", this.assignee);
+        Bson update = Updates.push("assignee", assignee);
         taskCollection.findOneAndUpdate(filter, update);
-//
+
 
 
 

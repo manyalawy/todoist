@@ -79,6 +79,22 @@ public class Consumer {
 
         });
 
+        channel.basicConsume("search-list", false, (consumerTag, message) -> {
+            String s = new String(message.getBody(), "UTF-8");
+            Helpers helpers = new Helpers();
+            JSONObject jsonObject = helpers.parseToJson(s);
+            ListSearch ListSearch =new ListSearch((String) jsonObject.get("name"));
+
+            ListSearch.execute();
+        }, consumerTag -> {
+
+        });
+
+
+
+
+
+
     }
 
 
