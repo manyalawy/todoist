@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="changed git ignore">
-      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/SortTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/TaskDeadline.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/TaskSearch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/ListSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/ListSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Consumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +18,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="List" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
