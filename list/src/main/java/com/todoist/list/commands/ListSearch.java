@@ -32,7 +32,7 @@ public class ListSearch implements Command{
         Bson filter = Filters.eq("name", listName);
 
         Bson projection = Projections.include("name");
-//        todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
+//       todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
 
 
 

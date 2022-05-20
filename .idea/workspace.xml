@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="m">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/AssignToTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/AssignToTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/ListSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/ListSearch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/list/target/classes/com/todoist/list/config/Consumer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" afterDir="false" />
     </list>
@@ -160,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653009042300</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="m">
+      <created>1653011196244</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1653011196244</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -74,7 +74,9 @@ public class ListController {
         JSONParser parser = new JSONParser();
         JSONObject json = (JSONObject) parser.parse(body);
         Producer producer =  new Producer();
+       
         producer.produceMessage("search-list", body);
+
         HashMap res = new HashMap<>();
         res.put("success", true);
         return res;
