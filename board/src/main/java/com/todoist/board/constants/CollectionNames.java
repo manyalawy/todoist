@@ -5,6 +5,7 @@ public enum CollectionNames {
     TASK("task"),
     SUBTASK("subtask"),
     COMMENT("comment");
+    BOARD("board");
 
     String collectionName;
     CollectionNames(String collectionName) {
