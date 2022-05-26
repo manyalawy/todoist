@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="changed git ignore">
-      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/AddCollaborator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/AddComment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/commands/DeleteTask.java" afterDir="false" />
+    <list default="true" id="459a6c51-127c-48be-8357-e2a5d7076cf8" name="Changes" comment="m">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/list.iml" beforeDir="false" afterPath="$PROJECT_DIR$/list/list.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/list/src/main/java/com/todoist/list/config/Consumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/todoist/server/controller/ListController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +20,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/osamaList" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="List" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -47,6 +50,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -90,19 +94,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="todoist" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="todoist" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ServerApplication" />
@@ -131,5 +122,13 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/todoist$ListApplication.ic" NAME="ListApplication Coverage Results" MODIFIED="1649548613513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.todoist.list.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/todoist$ServerApplication.ic" NAME="ServerApplication Coverage Results" MODIFIED="1653005123592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.todoist.server.config.*</FILTER>
+    </SUITE>
   </component>
 </project>
