@@ -1,0 +1,25 @@
+config:
+  target: "http://localhost:3000"
+  phases :
+    - duration: 60
+      arrivalRate: 5
+    - duration:
+      120 arrivalRate:
+      5 rampTo: 50
+    - duration: 600
+      arrivalRate: 50
+scenarios :
+  - name: "Search and buy"
+     flow: # Flow is an array of operations that a user may perform
+      - post:
+          url: "/auth"
+            json :
+                username : "{{username}}"
+                password : "{{password}}"
+      - get:
+          url: "/details/{{ id }}"
+      - think: 3
+      - post:
+          url: "/cart"
+            json :
+                productId : "{{ id }}"
