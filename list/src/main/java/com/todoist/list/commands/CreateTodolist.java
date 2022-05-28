@@ -1,10 +1,10 @@
 package com.todoist.list.commands;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.InsertOneResult;
 import com.todoist.list.config.MongoDB;
 import com.todoist.list.constants.CollectionNames;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 
@@ -20,10 +20,11 @@ public class CreateTodolist implements Command {
         this.creators.add(userId);
     }
 
-    public void execute() {
+    public InsertOneResult execute() {
         MongoDB db = new MongoDB();
         MongoCollection collection =  db.dbInit(CollectionNames.TODOLIST.get());
         Document todolist = new Document("name", this.todolistName).append("creator", this.userId).append("collaborators", this.creators);
-        collection.insertOne(todolist);
+        InsertOneResult result =  collection.insertOne(todolist);
+        return result;
     }
 }

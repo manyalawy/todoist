@@ -1,6 +1,5 @@
 package com.todoist.list.config;
 
-import com.todoist.list.commands.CreateTodolist;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

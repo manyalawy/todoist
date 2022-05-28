@@ -1,20 +1,18 @@
 package com.todoist.server.controller;
 
+import com.todoist.server.config.List.CreateTodolistRMQ;
 import com.todoist.server.config.Producer;
 import com.todoist.server.config.RabbitConfiguration;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 import java.io.IOException;
@@ -26,14 +24,29 @@ import java.util.concurrent.TimeoutException;
 @RequestMapping("/api/todolist")
 public class ListController {
 
+    @Autowired
+    RabbitTemplate rabbitTemplate;
+
     @PostMapping("/create")
-    public Map createTodolist(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-        producer.produceMessage("create-todolist", body);
+    public Map createTodolist(@RequestBody String body){
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(CreateTodolistRMQ.RPC_EXCHANGE, CreateTodolistRMQ.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
 

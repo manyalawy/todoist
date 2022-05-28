@@ -21,7 +21,7 @@ public class RabbitConfiguration {
     }
 
     @Bean
-    public RabbitTemplate rabbitTemplate() {
+    public RabbitTemplate rabbitTemplat() {
         return new RabbitTemplate(connectionFactory());
     }
 
