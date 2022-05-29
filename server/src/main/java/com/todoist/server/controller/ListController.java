@@ -78,6 +78,7 @@ public class ListController {
         // Create a message subject
         HashMap res = new HashMap<>();
         Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("create-subtask");
         //The customer sends a message
         Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
         String response = "";
@@ -124,23 +125,6 @@ public class ListController {
         Producer producer =  new Producer();
        
         producer.produceMessage("search-list", body);
-
-
-//        ApplicationContext context =
-//                new AnnotationConfigApplicationContext(RabbitConfiguration.class);
-//        AmqpTemplate template = context.getBean(AmqpTemplate.class);
-//
-
-
-//        ListSearch ListSearch =new ListSearch((String) jsonObject.get("name"));
-//
-//        ListSearch.execute();
-
-
-//        template.convertAndSend("myqueue", "Hello from RabbitMQ!  test ");
-
-
-
 
         HashMap res = new HashMap<>();
         res.put("success", true);
@@ -232,8 +216,5 @@ public class ListController {
         AmqpTemplate template = context.getBean(AmqpTemplate.class);
 
        template.convertAndSend("myqueue", "TESTTTTTT finall ");
-
-
-
     }
 }

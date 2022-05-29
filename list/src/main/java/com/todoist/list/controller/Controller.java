@@ -19,8 +19,6 @@ public class Controller {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
-
-
     @RabbitListener(queues = RabbitMQConfig.RPC_MESSAGE_QUEUE)
     public void listener(Message message) {
         byte[] body = message.getBody();
@@ -61,7 +59,10 @@ public class Controller {
                 + result.getInsertedId().asObjectId().getValue()).getBytes()).build();
                 CorrelationData correlationData = new CorrelationData(message.getMessageProperties().getCorrelationId());
                 rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
+                break;
             }
+            default:
+                break;
         }
     }
 
