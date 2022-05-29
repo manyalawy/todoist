@@ -17,27 +17,27 @@ import org.bson.types.ObjectId;
 
 public class DeleteTaskFromBoard implements Command{
  
-    String task_name;
+    ObjectId task_ID;
     ObjectId board_ID;
     
-    public DeleteTaskFromBoard(String taskName, String todoListId) {
-        this.task_name = taskName;
-        this.board_ID = new ObjectId(todoListId);
+    public DeleteTaskFromBoard(String taskID, String board_ID) {
+        this.task_ID = taskID;
+        this.board_ID = new ObjectId(board_ID);
     }
 
    public void execute() {
         MongoDB db = new MongoDB();
-        MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
+        MongoCollection boardCollection =  db.dbInit(CollectionNames.BOARD.get());
         MongoCollection taskCollection = db.dbInit(CollectionNames.TASK.get());
 
 
         //Delete Task
-        taskCollection.deleteOne(Filters.eq("name", task_name)); 
+        boardCollection.deleteOne(Filters.eq("_id", task_ID)); 
 
         //Deleting task from board
         Bson filter = Filters.eq("_id", this.board_ID);
-        Bson update = Updates.pull("tasks", Filters.eq("name", task_name));
-        todolistCollection.findOneAndUpdate(filter, update);
+        Bson update = Updates.pull("tasks", this.task_ID);
+        boardCollection.findOneAndUpdate(filter, update);
 
     }
     

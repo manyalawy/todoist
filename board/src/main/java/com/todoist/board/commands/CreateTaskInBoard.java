@@ -14,14 +14,14 @@ public class CreateTaskInBoard implements Command {
     String task_name;
     ObjectId board_ID;
 
-    public CreateTaskInBoard(String taskName, String todoListId) {
+    public CreateTaskInBoard(String taskName, String boardID) {
         this.task_name = taskName;
-        this.board_ID = new ObjectId(todoListId);
+        this.board_ID = new ObjectId(boardID);
     }
 
     public void execute() {
         MongoDB db = new MongoDB();
-        MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
+        MongoCollection todolistCollection =  db.dbInit(CollectionNames.BOARD.get());
         MongoCollection taskCollection = db.dbInit(CollectionNames.TASK.get());
 
         //Inserting task

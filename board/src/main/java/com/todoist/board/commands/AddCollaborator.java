@@ -14,14 +14,14 @@ public class AddCollaborator implements Command {
     ObjectId user_ID;
     ObjectId board_ID;
 
-    public AddCollaborator(ObjectId user_ID, String todoListId) {
+    public AddCollaborator(ObjectId user_ID, String boardID) {
         this.user_ID = user_ID;
-        this.board_ID = new ObjectId(todoListId);
+        this.board_ID = new ObjectId(boardID);
     }
 
     public void execute() {
         MongoDB db = new MongoDB();
-        MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
+        MongoCollection boardCollection =  db.dbInit(CollectionNames.BOARD.get());
         MongoCollection taskCollection = db.dbInit(CollectionNames.TASK.get());
 
         //Inserting user
@@ -31,6 +31,6 @@ public class AddCollaborator implements Command {
         //Inserting user in board
         Bson filter = Filters.eq("_id", this.board_ID);
         Bson update = Updates.push("users", result.getInsertedId().asObjectId());
-        todolistCollection.findOneAndUpdate(filter, update);
+        boardCollection.findOneAndUpdate(filter, update);
     }
 }

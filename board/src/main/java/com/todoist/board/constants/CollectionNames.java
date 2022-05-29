@@ -4,8 +4,9 @@ public enum CollectionNames {
     TODOLIST("todolist"),
     TASK("task"),
     SUBTASK("subtask"),
-    COMMENT("comment");
-    BOARD("board");
+    COMMENT("comment"),
+    BOARD("board"),
+    PHOTO("photo");
 
     String collectionName;
     CollectionNames(String collectionName) {

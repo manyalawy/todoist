@@ -8,13 +8,13 @@ import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 
-public class CreateTodolist implements Command {
-    String todolistName;
+public class CreateBoard implements Command {
+    String BoardName;
     String userId;
     ArrayList <String> creators;
 
-    public CreateTodolist(String todolistName, String userId) {
-        this.todolistName = todolistName;
+    public CreateBoard(String BoardName, String userId) {
+        this.BoardName = BoardName;
         this.userId = userId;
         this.creators = new ArrayList<>();
         this.creators.add(userId);
@@ -22,8 +22,8 @@ public class CreateTodolist implements Command {
 
     public void execute() {
         MongoDB db = new MongoDB();
-        MongoCollection collection =  db.dbInit(CollectionNames.TODOLIST.get());
-        Document todolist = new Document("name", this.todolistName).append("creator", this.userId).append("collaborators", this.creators);
-        collection.insertOne(todolist);
+        MongoCollection collection =  db.dbInit(CollectionNames.BOARD.get());
+        Document board = new Document("name", this.BoardName).append("creator", this.userId).append("collaborators", this.creators);
+        collection.insertOne(board);
     }
 }

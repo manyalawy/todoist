@@ -25,14 +25,14 @@ public class BoardSearch implements Command{
     public void execute() {
 
         MongoDB db = new MongoDB();
-        MongoCollection todolistCollection =  db.dbInit(CollectionNames.BOARD.get());
+        MongoCollection boardCollection =  db.dbInit(CollectionNames.BOARD.get());
 
 
         //Inserting task in todolist
         Bson filter = Filters.eq("name", boardName);
 
         Bson projection = Projections.include("name");
-//       todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
+//       boardCollection.find(filter).forEach(doc -> System.out.println(doc));
 
 
 

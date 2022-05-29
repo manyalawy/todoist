@@ -14,12 +14,10 @@ public class AddCommentTaskBoard implements Command{
 
     String content;
     ObjectId task_ID;
-    ObjectId board_ID;
 
-    public AddCommentTaskBoard(String comment, String task_ID, String board_id) {
+    public AddCommentTaskBoard(String comment, String task_ID) {
         this.content = comment;
         this.task_ID = new ObjectId(task_ID);
-        this.board_id = new ObjectId(board_id);
 
     }
 
@@ -34,10 +32,9 @@ public class AddCommentTaskBoard implements Command{
 
 
         Bson filter = Filters.eq("_id", this.task_ID);
-        Bson filter2 = Filters.eq("_id", this.board_ID);
 
         Bson update = Updates.push("comments", result.getInsertedId().asObjectId());
-        taskCollection.findOneAndUpdate(filter,filter2, update);
+        taskCollection.findOneAndUpdate(filter, update);
     }
 
 }
