@@ -11,24 +11,25 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class CreateTodolistRMQ {
+public class RabbitMQConfig {
 
-    public static final String RPC_MESSAGE_QUEUE = "create_todolist_queue";
-    public static final String RPC_REPLY_MESSAGE_QUEUE = "create_todolist_queue_reply";
+    public static final String RPC_MESSAGE_QUEUE = "todolist_queue";
+    public static final String RPC_REPLY_MESSAGE_QUEUE = "todolist_queue_reply";
     public static final String RPC_EXCHANGE = "rpc_exchange";
+
+
     /** *
      * Set sending RPCQueue message
      Configure the Send Message Queue*/
     @Bean
-    Queue msgQueue() {
-
+    Queue todolistMsgQueue() {
         return new Queue(RPC_MESSAGE_QUEUE);
     }
     /** *
      * Return Queue Configuration
      */
     @Bean
-    Queue replyQueue() {
+    Queue todolistReplyQueue() {
 
         return new Queue(RPC_REPLY_MESSAGE_QUEUE);
     }
@@ -36,7 +37,7 @@ public class CreateTodolistRMQ {
      * Switch setting
      */
     @Bean
-    TopicExchange exchange() {
+    TopicExchange todolistExchange() {
 
         return new TopicExchange(RPC_EXCHANGE);
     }
@@ -44,40 +45,40 @@ public class CreateTodolistRMQ {
      * Queuing and Switch Link Request
      */
     @Bean
-    Binding msgBinding() {
+    Binding todolistMsgBinding() {
 
-        return BindingBuilder.bind(msgQueue()).to(exchange()).with(RPC_MESSAGE_QUEUE);
+        return BindingBuilder.bind(todolistMsgQueue()).to(todolistExchange()).with(RPC_MESSAGE_QUEUE);
     }
     /** *
      * Back to Queue and Switch Link
      */
     @Bean
-    Binding replyBinding() {
+    Binding todolistReplyBinding() {
 
-        return BindingBuilder.bind(replyQueue()).to(exchange()).with(RPC_REPLY_MESSAGE_QUEUE);
+        return BindingBuilder.bind(todolistReplyQueue()).to(todolistExchange()).with(RPC_REPLY_MESSAGE_QUEUE);
     }
     /** *
      * Use RabbitTemplate Send and receive messages
      * And set callback queue address
      */
     @Bean
-    RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+    RabbitTemplate todolistRabbitTemplate(ConnectionFactory connectionFactory) {
 
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
         template.setReplyAddress(RPC_REPLY_MESSAGE_QUEUE);
-//        template.setReplyTimeout(6000);
+        template.setReplyTimeout(10000);
         return template;
     }
     /** *
      * Configure listener for return queue
      */
     @Bean
-    SimpleMessageListenerContainer replyContainer(ConnectionFactory connectionFactory) {
+    SimpleMessageListenerContainer todolistReplyContainer(ConnectionFactory connectionFactory) {
 
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         container.setQueueNames(RPC_REPLY_MESSAGE_QUEUE);
-        container.setMessageListener(rabbitTemplate(connectionFactory));
+        container.setMessageListener(todolistRabbitTemplate(connectionFactory));
         return container;
     }
 

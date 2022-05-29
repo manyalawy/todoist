@@ -1,8 +1,7 @@
 package com.todoist.server.controller;
 
-import com.todoist.server.config.List.CreateTodolistRMQ;
-import com.todoist.server.config.Producer;
-import com.todoist.server.config.RabbitConfiguration;
+import com.todoist.server.config.List.*;
+import com.todoist.server.config.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -29,11 +28,11 @@ public class ListController {
 
     @PostMapping("/create")
     public Map createTodolist(@RequestBody String body){
-        // Create a message subject
         HashMap res = new HashMap<>();
         Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("create-todolist");
         //The customer sends a message
-        Message result = rabbitTemplate.sendAndReceive(CreateTodolistRMQ.RPC_EXCHANGE, CreateTodolistRMQ.RPC_MESSAGE_QUEUE, newMessage);
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
         String response = "";
         if (result != null) {
             // To get message sent correlationId
@@ -52,23 +51,48 @@ public class ListController {
 
     @PostMapping("task/create")
     public Map createTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-        producer.produceMessage("create-task", body);
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("create-task");
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
 
     @PostMapping("subtask/create")
     public Map createSubtask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-        producer.produceMessage("create-subtask", body);
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
     @PostMapping("task/assign")
