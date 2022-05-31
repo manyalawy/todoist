@@ -5,8 +5,10 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.InsertOneResult;
+import com.mongodb.client.result.UpdateResult;
 import com.todoist.list.config.MongoDB;
 import com.todoist.list.constants.CollectionNames;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -21,26 +23,13 @@ public class AssignToTask implements Command{
     }
 
 
-    @Override
-    public InsertOneResult execute() {
-
-
+    public String execute() {
         MongoDB db = new MongoDB();
-        // MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
         MongoCollection taskCollection = db.dbInit(CollectionNames.TASK.get());
-
-
-
-        //assigne not repeated
-
-//System.out.println("assigntask");
         Bson filter = Filters.eq("_id", TaskId);
-
         Bson update = Updates.push("assignee", assignee);
-        taskCollection.findOneAndUpdate(filter, update);
-
-
-        return null;
+        Document res = (Document) taskCollection.findOneAndUpdate(filter, update);
+        return res.toJson();
     }
 }
 

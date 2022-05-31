@@ -4,7 +4,7 @@ import com.mongodb.client.result.InsertOneResult;
 
 public interface Command {
 
-    public InsertOneResult execute();
+    public Object execute();
 
 
 }

@@ -19,7 +19,7 @@ public class DeleteTask implements Command {
         this.todoListId = new ObjectId(todoListId);
     }
 
-    public InsertOneResult execute() {
+    public DeleteResult execute() {
         MongoDB db = new MongoDB();
         MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
         MongoCollection taskCollection = db.dbInit(CollectionNames.TASK.get());
@@ -32,6 +32,6 @@ public class DeleteTask implements Command {
         Bson filter = Filters.eq("_id", this.todoListId);
         Bson update = Updates.pull("tasks", this.taskId);
         todolistCollection.findOneAndUpdate(filter, update);
-        return null;
+        return result;
     }
 }
