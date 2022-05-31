@@ -96,125 +96,220 @@ public class ListController {
         res.put("msg", response);
         return res;
     }
+
     @PostMapping("task/assign")
     public Map assignTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-        producer.produceMessage("assign-task", body);
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("assign-task");
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
 
     @PostMapping("task/edit")
     public Map editTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-        producer.produceMessage("edit-task", body);
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("edit-task");
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
 
     @GetMapping("/search")
     public Map searchList(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-       
-        producer.produceMessage("search-list", body);
-
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("search-todolist");
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
 
     @GetMapping("task/search")
     public Map searchTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-
-        producer.produceMessage("search-task", body);
-
-
-
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("search-task");
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
 
     @GetMapping("task/sort")
     public Map sortTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-
-        producer.produceMessage("sort-task", body);
-
-
-
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("sort-task");
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
 
     @GetMapping("task/deadline")
     public Map deadlineTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-
-        producer.produceMessage("deadline-task", body);
-
-
-
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("task-deadline");
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
 
     @DeleteMapping("task/delete")
     public Map deleteTask(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-        producer.produceMessage("delete-task", body);
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("delete-task");
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
 
     @PostMapping("comments/add")
     public Map addComment(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-        producer.produceMessage("add-comment", body);
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("add-comment");
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
     }
 
     @PostMapping("collaborators/add")
     public Map addCollaborator(@RequestBody String body) throws ParseException, IOException, TimeoutException {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(body);
-        Producer producer =  new Producer();
-        producer.produceMessage("add-collaborator", body);
+        // Create a message subject
         HashMap res = new HashMap<>();
-        res.put("success", true);
+        Message newMessage = MessageBuilder.withBody(body.getBytes()).build();
+        newMessage.getMessageProperties().setMessageId("add-collaborator");
+        //The customer sends a message
+        Message result = rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_MESSAGE_QUEUE, newMessage);
+        String response = "";
+        if (result != null) {
+            // To get message sent correlationId
+            String correlationId = newMessage.getMessageProperties().getCorrelationId();
+            // Get response header information
+            HashMap<String, Object> headers = (HashMap<String, Object>) result.getMessageProperties().getHeaders();
+            // Access server Message returned id
+            String msgId = (String) headers.get("spring_returned_message_correlation");
+            if (msgId.equals(correlationId)) {
+                response = new String(result.getBody());
+            }
+        }
+        res.put("msg", response);
         return res;
-    }
-
-    @PostMapping("test")
-    public void test(@RequestBody String body){
-        ApplicationContext context =
-                new AnnotationConfigApplicationContext(RabbitConfiguration.class);
-        AmqpTemplate template = context.getBean(AmqpTemplate.class);
-
-       template.convertAndSend("myqueue", "TESTTTTTT finall ");
     }
 }
