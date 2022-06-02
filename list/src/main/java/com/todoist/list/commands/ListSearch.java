@@ -7,6 +7,7 @@ import com.mongodb.client.model.Projections;
 import com.mongodb.client.result.InsertOneResult;
 import com.todoist.list.config.MongoDB;
 import com.todoist.list.constants.CollectionNames;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 
 public class ListSearch implements Command{
@@ -23,7 +24,7 @@ public class ListSearch implements Command{
 
 
     @Override
-    public InsertOneResult execute() {
+    public String execute() {
 
         MongoDB db = new MongoDB();
         MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
@@ -32,11 +33,10 @@ public class ListSearch implements Command{
         //Inserting task in todolist
         Bson filter = Filters.eq("name", listName);
 
-        Bson projection = Projections.include("name");
-//       todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
+//        Bson projection = Projections.include("name");
+        Document res = (Document)      todolistCollection.find(filter);
 
-
-        return null;
+        return res.toJson();
     }
 
 

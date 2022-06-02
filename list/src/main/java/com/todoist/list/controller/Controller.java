@@ -15,6 +15,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class Controller {
 
@@ -66,11 +68,68 @@ public class Controller {
                 rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
                 break;
             }
+            case "edit-task": {
+                EditTask editTask= new EditTask((String) jsonObject.get("task_id"), (String) jsonObject.get("task_name"),(String) jsonObject.get("piority"),(Date) jsonObject.get("due_date"),(Boolean) jsonObject.get("done"));
+                String result = editTask.execute();
+                //This is the message to be returned by the server
+                Message build = MessageBuilder.withBody((result).getBytes()).build();
+                CorrelationData correlationData = new CorrelationData(message.getMessageProperties().getCorrelationId());
+                rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
+                break;
+            }
+            case "search-todolist": {
+                ListSearch searchList= new ListSearch( (String) jsonObject.get("list_name"));
+                String result = searchList.execute();
+                //This is the message to be returned by the server
+                Message build = MessageBuilder.withBody((result).getBytes()).build();
+                CorrelationData correlationData = new CorrelationData(message.getMessageProperties().getCorrelationId());
+                rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
+                break;
+            }
+            case "sort-task": {
+                SortTask sortTask = new SortTask( (String) jsonObject.get("sort_by"),(String) jsonObject.get("order"));
+                String result = sortTask.execute();
+                //This is the message to be returned by the server
+                Message build = MessageBuilder.withBody((result).getBytes()).build();
+                CorrelationData correlationData = new CorrelationData(message.getMessageProperties().getCorrelationId());
+                rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
+                break;
+            }
+            case "task-deadline": {
+                TaskDeadline deadlineTask = new TaskDeadline( );
+                String result = deadlineTask.execute();
+                //This is the message to be returned by the server
+                Message build = MessageBuilder.withBody((result).getBytes()).build();
+                CorrelationData correlationData = new CorrelationData(message.getMessageProperties().getCorrelationId());
+                rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
+                break;
+            }
+
+
             case "delete-task": {
                 DeleteTask deleteTask = new DeleteTask((String) jsonObject.get("task_id"), (String) jsonObject.get("todolist_id"));
                 DeleteResult result = deleteTask.execute();
                 //This is the message to be returned by the server
                 Message build = MessageBuilder.withBody(("Task was deleted successfully").getBytes()).build();
+                CorrelationData correlationData = new CorrelationData(message.getMessageProperties().getCorrelationId());
+                rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
+                break;
+            }
+
+            case "add-collaborator": {
+                AddCollaborator addCollaborator = new AddCollaborator((String) jsonObject.get("task_id"), (String) jsonObject.get("todolist_id"));
+                String result = addCollaborator.execute();
+                //This is the message to be returned by the server
+                Message build = MessageBuilder.withBody((result).getBytes()).build();
+                CorrelationData correlationData = new CorrelationData(message.getMessageProperties().getCorrelationId());
+                rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
+                break;
+            }
+            case "add-comment": {
+                AddComment addComment = new AddComment((String) jsonObject.get("comment"), (String) jsonObject.get("task_id"));
+                String result = addComment.execute();
+                //This is the message to be returned by the server
+                Message build = MessageBuilder.withBody((result).getBytes()).build();
                 CorrelationData correlationData = new CorrelationData(message.getMessageProperties().getCorrelationId());
                 rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
                 break;

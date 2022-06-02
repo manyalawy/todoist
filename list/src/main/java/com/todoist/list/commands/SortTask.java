@@ -6,6 +6,7 @@ import com.mongodb.client.model.Sorts;
 import com.mongodb.client.result.InsertOneResult;
 import com.todoist.list.config.MongoDB;
 import com.todoist.list.constants.CollectionNames;
+import org.bson.Document;
 import org.bson.types.ObjectId;
 
 public class SortTask implements Command{
@@ -15,9 +16,9 @@ public class SortTask implements Command{
     String order;
 
 
-    public SortTask(String Taskid, String sort, String order) {
+    public SortTask(String sort, String order) {
         this.sort = sort;
-        this.Taskid = new ObjectId(Taskid);
+
         this.order=order;
 
 
@@ -27,25 +28,25 @@ public class SortTask implements Command{
 
 
     @Override
-    public InsertOneResult execute() {
+    public String execute() {
 
         MongoDB db = new MongoDB();
         MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
         MongoCollection taskCollection = db.dbInit(CollectionNames.TASK.get());
 
 
+        Document res = (Document) taskCollection.find();
+
             if(order=="asc") {
-                taskCollection.find().sort(Sorts.ascending(sort));
+                res = (Document) taskCollection.find().sort(Sorts.ascending(sort));
             }
 
-            else{
-                taskCollection.find().sort(Sorts.descending(sort));
+        if(order=="desc") {
+           res = (Document) taskCollection.find().sort(Sorts.descending(sort));
             }
 
-//       todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
 
-
-        return null;
+        return res.toJson();
     }
 
 

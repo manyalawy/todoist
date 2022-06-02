@@ -6,6 +6,7 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
 import com.todoist.list.config.MongoDB;
 import com.todoist.list.constants.CollectionNames;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.time.LocalDate;
@@ -25,7 +26,7 @@ public class TaskDeadline implements Command{
 
 
     @Override
-    public InsertOneResult execute() {
+    public String execute() {
 
         MongoDB db = new MongoDB();
         MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
@@ -33,11 +34,11 @@ public class TaskDeadline implements Command{
 
 
         Bson filter = Filters.gt("due_date",LocalDate.now());
-        taskCollection.find(filter);
+        Document res = (Document) taskCollection.find(filter);
 //       todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
 
 
-        return null;
+        return res.toJson();
     }
 
 

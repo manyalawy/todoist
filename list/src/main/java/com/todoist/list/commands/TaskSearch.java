@@ -39,7 +39,7 @@ public class TaskSearch implements Command{
 //         Bson projection = Projections.include("name");
 
 
-
+        todolistCollection.find(filter2);
         taskCollection.find(filter);
 
 //       todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
