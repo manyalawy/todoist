@@ -86,6 +86,15 @@ public class Controller {
                 rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
                 break;
             }
+            case "search-task": {
+                TaskSearch searchTask= new TaskSearch( (String) jsonObject.get("task_name"));
+                String result = searchTask.execute();
+                //This is the message to be returned by the server
+                Message build = MessageBuilder.withBody((result).getBytes()).build();
+                CorrelationData correlationData = new CorrelationData(message.getMessageProperties().getCorrelationId());
+                rabbitTemplate.sendAndReceive(RabbitMQConfig.RPC_EXCHANGE, RabbitMQConfig.RPC_REPLY_MESSAGE_QUEUE, build, correlationData);
+                break;
+            }
             case "sort-task": {
                 SortTask sortTask = new SortTask( (String) jsonObject.get("sort_by"),(String) jsonObject.get("order"));
                 String result = sortTask.execute();
