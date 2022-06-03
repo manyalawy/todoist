@@ -1,8 +1,14 @@
-package entity;
+package com.example.firebase.springbootfirebasedemo;
 
 
 public class Notifications {
-
+	public Notifications() {}
+	public Notifications(String title, int id, String body) {
+		// TODO Auto-generated constructor stub
+		this.title = title;
+		this.id = id;
+		this.body = body;
+	}
 	private static  String title;
 	private int id;
 	private String body;
