@@ -20,10 +20,10 @@ public class RabbitConfiguration {
         return new RabbitAdmin(connectionFactory());
     }
 
-    @Bean
-    public RabbitTemplate rabbitTemplate() {
-        return new RabbitTemplate(connectionFactory());
-    }
+//    @Bean
+//    public RabbitTemplate rabbitTemplat() {
+//        return new RabbitTemplate(connectionFactory());
+//    }
 
     @Bean
     public Queue myQueue() {

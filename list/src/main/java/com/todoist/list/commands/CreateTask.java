@@ -19,7 +19,7 @@ public class CreateTask implements Command {
         this.todoListId = new ObjectId(todoListId);
     }
 
-    public void execute() {
+    public InsertOneResult execute() {
         MongoDB db = new MongoDB();
         MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
         MongoCollection taskCollection = db.dbInit(CollectionNames.TASK.get());
@@ -32,5 +32,6 @@ public class CreateTask implements Command {
         Bson filter = Filters.eq("_id", this.todoListId);
         Bson update = Updates.push("tasks", result.getInsertedId().asObjectId());
         todolistCollection.findOneAndUpdate(filter, update);
+        return result;
     }
 }

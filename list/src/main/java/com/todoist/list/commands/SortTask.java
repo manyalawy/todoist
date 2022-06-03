@@ -1,17 +1,14 @@
 
 package com.todoist.list.commands;
-import com.mongodb.client.FindIterable;
+
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Projections;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Sorts;
+import com.mongodb.client.result.InsertOneResult;
 import com.todoist.list.config.MongoDB;
 import com.todoist.list.constants.CollectionNames;
-import org.bson.conversions.Bson;
+import org.bson.Document;
 import org.bson.types.ObjectId;
-
-import java.awt.*;
-import java.util.Date;
 
 public class SortTask implements Command{
 
@@ -20,9 +17,9 @@ public class SortTask implements Command{
     String order;
 
 
-    public SortTask(String Taskid, String sort, String order) {
+    public SortTask(String sort, String order) {
         this.sort = sort;
-        this.Taskid = new ObjectId(Taskid);
+
         this.order=order;
 
 
@@ -32,25 +29,35 @@ public class SortTask implements Command{
 
 
     @Override
-    public void execute() {
+    public String execute() {
 
         MongoDB db = new MongoDB();
         MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
         MongoCollection taskCollection = db.dbInit(CollectionNames.TASK.get());
 
 
+        String result = "";
             if(order=="asc") {
-                taskCollection.find().sort(Sorts.ascending(sort));
+
+                MongoCursor <Document> res =  taskCollection.find().sort(Sorts.ascending(sort)).iterator();
+                while(res.hasNext()){
+                    result += res.next().toString();
+                }
             }
 
-            else{
-                taskCollection.find().sort(Sorts.descending(sort));
+        if(order=="desc") {
+            MongoCursor <Document> res = taskCollection.find().sort(Sorts.descending(sort)).iterator();
+            while(res.hasNext()){
+                result += res.next().toString();
+            }
             }
 
-//       todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
 
 
 
+
+
+        return result;
     }
 
 

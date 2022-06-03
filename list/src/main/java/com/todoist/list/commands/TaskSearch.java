@@ -1,11 +1,13 @@
 
 package com.todoist.list.commands;
-import com.mongodb.client.FindIterable;
+
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Projections;
+import com.mongodb.client.result.InsertOneResult;
 import com.todoist.list.config.MongoDB;
 import com.todoist.list.constants.CollectionNames;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
@@ -15,9 +17,9 @@ public class TaskSearch implements Command{
     ObjectId Listid;
 
 
-    public TaskSearch(String Listid,String taskName) {
+    public TaskSearch(String taskName) {
         this.taskName = taskName;
-        this.Listid = new ObjectId(Listid);
+//        this.Listid = new ObjectId(Listid);
 
     }
 
@@ -25,7 +27,7 @@ public class TaskSearch implements Command{
 
 
     @Override
-    public void execute() {
+    public String execute() {
 
         MongoDB db = new MongoDB();
         MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
@@ -34,17 +36,19 @@ public class TaskSearch implements Command{
 
         //Inserting task in todolist
         Bson filter = Filters.eq("name", taskName);
-        Bson filter2 = Filters.eq("_id", Listid);
+//        Bson filter2 = Filters.eq("_id", Listid);
 
 //         Bson projection = Projections.include("name");
 
 
+//        todolistCollection.find(filter2);
+        MongoCursor <Document> res = taskCollection.find(filter).iterator();
+        String result = "";
+        while(res.hasNext()){
+            result += res.next().toString();
+        }
 
-        taskCollection.find(filter);
-
-//       todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
-
-
+        return result;
 
     }
 

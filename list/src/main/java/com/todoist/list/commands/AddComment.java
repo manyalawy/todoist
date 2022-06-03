@@ -20,7 +20,7 @@ public class AddComment implements Command{
         this.taskId = new ObjectId(taskId);
     }
 
-    public void execute() {
+    public String execute() {
         MongoDB db = new MongoDB();
         MongoCollection taskCollection =  db.dbInit(CollectionNames.TASK.get());
         MongoCollection commentCollection = db.dbInit(CollectionNames.COMMENT.get());
@@ -32,7 +32,10 @@ public class AddComment implements Command{
 
         Bson filter = Filters.eq("_id", this.taskId);
         Bson update = Updates.push("comments", result.getInsertedId().asObjectId());
-        taskCollection.findOneAndUpdate(filter, update);
+        Document res = (Document)   taskCollection.findOneAndUpdate(filter, update);
+
+        return res.toJson();
+        //return result;
     }
 
 }

@@ -20,14 +20,16 @@ public class AddCollaborator implements Command{
         this.todoListId = new ObjectId(todoListId);
     }
 
-    public void execute() {
+    public String execute() {
         MongoDB db = new MongoDB();
         MongoCollection todolistCollection =  db.dbInit(CollectionNames.TODOLIST.get());
 
 
         Bson filter = Filters.eq("_id", this.todoListId);
         Bson update = Updates.push("collaborators", this.userId);
-        todolistCollection.findOneAndUpdate(filter, update);
+        Document res = (Document)    todolistCollection.findOneAndUpdate(filter, update);
+
+        return res.toJson();
     }
 
 }
