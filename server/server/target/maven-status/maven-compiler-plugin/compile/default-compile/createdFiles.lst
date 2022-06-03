@@ -1,5 +1,0 @@
-com\todoist\server\config\RabbitConfiguration.class
-com\todoist\server\ServerApplication.class
-com\todoist\server\config\Producer.class
-com\todoist\server\controller\BoardController.class
-com\todoist\server\config\Board\RabbitMQConfig.class
