@@ -2,6 +2,7 @@
 package com.todoist.list.commands;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
 import com.todoist.list.config.MongoDB;
@@ -34,11 +35,15 @@ public class TaskDeadline implements Command{
 
 
         Bson filter = Filters.gt("due_date",LocalDate.now());
-        Document res = (Document) taskCollection.find(filter);
+        MongoCursor res = taskCollection.find(filter).iterator();
+        String result = "";
+        while(res.hasNext()){
+            result += res.next().toString();
+        }
+
+        return result;
 //       todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
 
-
-        return res.toJson();
     }
 
 

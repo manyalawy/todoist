@@ -2,6 +2,7 @@
 package com.todoist.list.commands;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
 import com.todoist.list.config.MongoDB;
@@ -41,12 +42,14 @@ public class TaskSearch implements Command{
 
 
 //        todolistCollection.find(filter2);
-        Document res = (Document) taskCollection.find(filter);
+        MongoCursor <Document> res = taskCollection.find(filter).iterator();
+        String result = "";
+        while(res.hasNext()){
+            result += res.next().toString();
+        }
 
-//       todolistCollection.find(filter).forEach(doc -> System.out.println(doc));
+        return result;
 
-
-        return res.toJson();
     }
 
 

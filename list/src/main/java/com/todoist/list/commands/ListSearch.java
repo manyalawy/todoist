@@ -1,7 +1,9 @@
 
 package com.todoist.list.commands;
 
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Projections;
 import com.mongodb.client.result.InsertOneResult;
@@ -34,9 +36,13 @@ public class ListSearch implements Command{
         Bson filter = Filters.eq("name", listName);
 
 //        Bson projection = Projections.include("name");
-        Document res = (Document)      todolistCollection.find(filter);
+        MongoCursor<Document> res =  todolistCollection.find(filter).iterator();
+        String result = "";
+        while(res.hasNext()){
+            result += res.next().toString();
+        }
 
-        return res.toJson();
+        return result;
     }
 
 
